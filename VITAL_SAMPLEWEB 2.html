@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Sample Website</title>
+<style>
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+ 
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+      background: #f9f9f9;
+      color: #333;
+      perspective: 1500px; /* Enables 3D depth */
+    }
+ 
+    header {
+      text-align: center;
+      margin-bottom: 20px;
+      padding: 20px;
+      background: #222;
+      color: #fff;
+      border-radius: 10px;
+      transition: transform 0.6s;
+    }
+ 
+    header:hover {
+      transform: rotateX(10deg);
+    }
+ 
+    /* Navigation Bar */
+    nav {
+      background: #444;
+      margin-bottom: 20px;
+    }
+ 
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+ 
+    nav ul li {
+      margin: 0 15px;
+    }
+ 
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      display: block;
+      transition: 0.3s;
+      transform-style: preserve-3d;
+    }
+ 
+    nav ul li a:hover {
+      background: #666;
+      border-radius: 5px;
+      transform: rotateY(15deg) translateZ(10px);
+    }
+ 
+    /* Sections as 3D cards */
+    section {
+      margin-bottom: 30px;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+ 
+    section:hover {
+      transform: rotateY(10deg) rotateX(5deg) scale(1.02);
+    }
+ 
+    img, video {
+      max-width: 100%;
+      border-radius: 10px;
+    }
+ 
+    /* 3D Cube */
+    .cube-container {
+      width: 200px;
+      height: 200px;
+      margin: 30px auto;
+      perspective: 1200px;
+    }
+ 
+    .cube {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      transform-style: preserve-3d;
+      animation: spin 8s infinite linear;
+    }
+ 
+    .cube div {
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      background: rgba(68, 68, 68, 0.9);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: bold;
+      border: 2px solid #fff;
+    }
+ 
+    .front  { transform: rotateY(0deg) translateZ(100px); }
+    .back   { transform: rotateY(180deg) translateZ(100px); }
+    .right  { transform: rotateY(90deg) translateZ(100px); }
+    .left   { transform: rotateY(-90deg) translateZ(100px); }
+    .top    { transform: rotateX(90deg) translateZ(100px); }
+    .bottom { transform: rotateX(-90deg) translateZ(100px); }
+ 
+    @keyframes spin {
+      from { transform: rotateX(0) rotateY(0); }
+      to   { transform: rotateX(360deg) rotateY(360deg); }
+    }
+ 
+    /* Form */
+    form {
+      background: #eee;
+      padding: 20px;
+      border-radius: 10px;
+    }
+ 
+    form label {
+      display: block;
+      margin: 10px 0 5px;
+      font-weight: bold;
+    }
+ 
+    form input, form textarea, form button {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+ 
+    form button {
+      background: #444;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+ 
+    form button:hover {
+      background: #666;
+      transform: translateZ(10px) rotateX(10deg);
+    }
+ 
+    footer {
+      text-align: center;
+      padding: 15px;
+      margin-top: 20px;
+      background: #222;
+      color: #fff;
+      border-radius: 10px;
+      transition: transform 0.6s;
+    }
+ 
+    footer:hover {
+      transform: rotateX(-10deg);
+    }
+ 
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+      }
+      nav ul li {
+        margin: 10px 0;
+      }
+    }
+</style>
+</head>
+<body>
+<header>
+<h1>Welcome to My Website</h1>
+<p>Hi! My name is Justine Matthew G. Vital from C334-IT.  
+    This is a simple webpage that I created using HTML5 elements and tags.</p>
+</header>
+ 
+  <nav>
+<ul>
+<li><a href="https://www.pexels.com/videos/" target="_blank">Free Photos & Videos</a></li>
+<li><a href="#about">About</a></li>
+<li><a href="#image">Image</a></li>
+<li><a href="#video">Video</a></li>
+<li><a href="#showcase">3D</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+ 
+  <main>
+<section id="about">
+<h2>About This Website</h2>
+<p>This website shows how to use HTML5 tags, insert links, images, and videos without copyright violations.</p>
+</section>
+ 
+    <section id="image">
+<h2>Sample Image</h2>
+<img src="https://images.pexels.com/photos/5985407/pexels-photo-5985407.jpeg" alt="Sky landscape">
+</section>
+ 
+    <section id="video">
+<h2>Sample Video</h2>
+<video controls>
+<source src="https://www.pexels.com/download/video/33314953/" type="video/mp4">
+        Your browser does not support the video tag.
+</video>
+</section>
+ 
+    <!-- New 3D Section -->
+<section id="showcase">
+<h2>3D Showcase</h2>
+<div class="cube-container">
+<div class="cube">
+<div class="front"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+<div class="back"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+<div class="right"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+<div class="left"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+<div class="top"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+<div class="bottom"><img src="https://images.pexels.com/photos/3299386/pexels-photo-3299386.jpeg"></div>
+</div>
+</div>
+</section>
+ 
+    <section id="contact">
+<h2>Contact Me</h2>
+<form>
+<label for="name">Full Name:</label>
+<input type="text" id="name" placeholder="Enter your name">
+ 
+        <label for="email">Email:</label>
+<input type="email" id="email" placeholder="Enter your email">
+ 
+        <label for="message">Message:</label>
+<textarea id="message" rows="5" placeholder="Write your message here"></textarea>
+ 
+        <button type="submit">Send Message</button>
+</form>
+</section>
+</main>
+ 
+  <footer>
+<p>&copy; 2025 My Sample Website |</p>
+</footer>
+</body>
+</html>
