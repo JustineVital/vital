@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>JS User Input Examples</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    section { margin-bottom: 30px; border: 1px solid #ccc; padding: 15px; border-radius: 8px; }
+    button { margin-top: 10px; }
+  </style>
+</head>
+<body>
+
+  
+  <section>
+    <h3>1. Button Click → Change Text</h3>
+    <p id="message">Click the button to change this text.</p>
+    <button onclick="changeText()">Click Me</button>
+  </section>
+
+  
+  <section>
+    <h3>2. Button Click → Change Background Color</h3>
+    <button onclick="changeBackground()">Change Background</button>
+  </section>
+
+  
+  <section>
+    <h3>3. Input Field + Button → Show Alert</h3>
+    <input type="text" id="username" placeholder="Enter your name">
+    <button onclick="showAlert()">Submit</button>
+  </section>
+
+  
+  <section>
+    <h3>4. Button Click → Toggle Image Visibility</h3>
+    <img id="myImage" src="https://images.pexels.com/photos/33757193/pexels-photo-33757193.jpeg" alt="Palm trees">
+    <br>
+    <button onclick="toggleImage()">Show/Hide Image</button>
+  </section>
+
+  
+  <section>
+    <h3>5. Button Click → Increase Counter</h3>
+    <p>Count: <span id="counter">0</span></p>
+    <button onclick="increaseCounter()">Click to Add</button>
+  </section>
+
+  <script>
+    // 1. Change text
+    function changeText() {
+      document.getElementById('message').innerText = 'You clicked the button!';
+    }
+
+    // 2. Change background color
+    function changeBackground() {
+      document.body.style.backgroundColor =
+        document.body.style.backgroundColor === 'lightblue' ? 'white' : 'lightblue';
+    }
+
+    // 3. Show alert with input value
+    function showAlert() {
+      const name = document.getElementById('username').value;
+      if(name.trim() === '') {
+        alert('Please enter your name first!');
+      } else {
+        alert('Hello ' + name + '!');
+      }
+    }
+
+    // 4. Toggle image visibility
+    function toggleImage() {
+      const img = document.getElementById('myImage');
+      img.style.display = img.style.display === 'none' ? 'block' : 'none';
+    }
+
+    // 5. Increase counter
+    let count = 0;
+    function increaseCounter() {
+      count++;
+      document.getElementById('counter').innerText = count;
+    }
+  </script>
+</body>
+</html>
