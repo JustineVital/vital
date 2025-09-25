@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            overflow: hidden;
+        }
+        nav a {
+            float: left;
+            display: block;
+            color: white;
+            padding: 14px 20px;
+            text-align: center;
+            text-decoration: none;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        form {
+            margin-top: 10px;
+            display: flex;
+            flex-direction: column;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+            gap: 10px;
+        }
+        input, textarea{
+            padding: 10%;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            width: 100%;
+        }
+        button {
+            padding: 10px;
+            background: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        img {
+            max-width: 300px;
+            height: auto;
+            border-radius: 8px;
+            margin-top: 20px;
+        }
+        section {
+            padding: 20px;
+            margin-top: 50px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1px;
+            position: fixed;
+            height: 3%;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    
+    <header>
+        <h1>Welcome to My Website</h1>
+    </header>
+
+    
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#product">Product</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    
+    <section id="home">
+        <h2>Home</h2>
+        <p>Welcome to the homepage. This is where we introduce our company and provide an overview of our offerings.</p>
+    </section>
+
+    <section id="about">
+        <h2>About</h2>
+        <p>Learn more about us, our mission, and the values that drive us forward.</p>
+    </section>
+
+    <section id="product">
+        <h2>Product</h2>
+        <p>Explore the amazing products we offer. We pride ourselves on quality houses in safe environments.</p>
+        <img src="https://images.pexels.com/photos/106399/pexels-photo-106399.jpeg">
+    </section>
+
+    <section id="gallery">
+        <h2>Gallery</h2>
+        <p>Check out our portfolio of images showcasing our products and services.</p>
+        <img src="https://images.pexels.com/photos/209315/pexels-photo-209315.jpeg">
+        <img src="https://images.pexels.com/photos/221024/pexels-photo-221024.jpeg">
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <p>If you'd like to get in touch, please use the contact form.</p>
+        <form action="thanku.html" method="GET">
+            <input type="text" name="Name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="message" rows="4" placeholder="Your Message" required></textarea>
+            <button type="submit">submit</button>
+        </form>
+    </section>
+
+    
+    <footer>
+        <p>&copy; 2025 My Website. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
