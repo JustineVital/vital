@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VSL DVG - Professional Photographer Booking</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Custom styles */
+        .page-transition {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .calendar-day {
+            transition: all 0.2s ease;
+        }
+        .calendar-day:hover:not(.booked):not(.past) {
+            transform: scale(1.05);
+            background-color: #f3f4f6;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.02);
+        }
+        .active-page {
+            border-bottom: 2px solid #3b82f6;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg fixed w-full top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <div class="flex-shrink-0">
+                        <h1 class="text-2xl font-bold text-blue-600">VSL DVG</h1>
+                    </div>
+                    <div class="hidden md:ml-6 md:flex md:space-x-8">
+                        <a href="#" class="text-gray-900 hover:text-blue-600 px-3 py-2 text-sm font-medium active-page" data-page="home">Home</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-600 px-3 py-2 text-sm font-medium" data-page="about">About</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-600 px-3 py-2 text-sm font-medium" data-page="gallery">Gallery</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-600 px-3 py-2 text-sm font-medium" data-page="contact">Contact</a>
+                        <a href="#" class="text-gray-500 hover:text-blue-600 px-3 py-2 text-sm font-medium" data-page="booking">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-16 min-h-screen">
+        <!-- Home Page -->
+        <div id="home-page" class="page-transition">
+            <!-- Hero Section -->
+            <section class="relative h-screen">
+                <div class="absolute inset-0 bg-black opacity-50"></div>
+                <img src="https://scontent.fmnl17-4.fna.fbcdn.net/v/t39.30808-6/490657542_9402166913228491_2480213823459598730_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_ohc=nhDJf-UB9pgQ7kNvwHPJaJ3&_nc_oc=AdnV5xO40U9xpexGlFIkBquKsfbxxzLhTrYg5SeMv8p4DnMTLMOdozkCz-0qI-MTNEQ&_nc_zt=23&_nc_ht=scontent.fmnl17-4.fna&_nc_gid=kRiSewN6e2IVHTqcynefkQ&oh=00_AfbEtAZVcwVYQdDfTn_gqbiVQ5NZiUbGAjFcHW0j1RpmcA&oe=68BECD43" alt="Professional photographer capturing golden hour portrait with soft natural lighting and blurred background" class="w-full h-full object-cover">
+                <div class="absolute inset-0 flex items-center justify-center text-center">
+                    <div class="text-white px-4">
+                        <h2 class="text-5xl md:text-7xl font-bold mb-6">Capture Your Perfect Moments</h2>
+                        <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Professional photography services for weddings, portraits, events, and commercial projects</p>
+                        <button class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition duration-300" data-page="booking">
+                            Book Your Session
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Services Section -->
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-4xl font-bold text-center mb-16">Our Services</h2>
+                    <div class="grid md:grid-cols-3 gap-8">
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">💍</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Wedding Photography</h3>
+                            <p class="text-gray-600">Capture the magic of your special day with our experienced wedding photography team.</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">👨‍👩‍👧‍👦</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Portrait Sessions</h3>
+                            <p class="text-gray-600">Professional portrait photography for individuals, families, and corporate headshots.</p>
+                        </div>
+                        <div class="text-center p-6 bg-gray-50 rounded-lg">
+                            <div class="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <span class="text-2xl">🎉</span>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Event Coverage</h3>
+                            <p class="text-gray-600">Comprehensive event photography for corporate events, parties, and special occasions.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page-transition hidden">
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-2 gap-12 items-center">
+                        <div>
+                            <img src="https://scontent.fmnl17-2.fna.fbcdn.net/v/t39.30808-6/491014376_9405008616277654_1638819313646092635_n.jpg?_nc_cat=107&ccb=1-7&_nc_sid=f727a1&_nc_ohc=GNLp-Kf_9y4Q7kNvwF3FjaB&_nc_oc=Adk_bVGZeWrrJdzTd2WqPabujOELoFfPv_doAK1KKrskdcK1kPKIyrgx-PcZwlfiviM&_nc_zt=23&_nc_ht=scontent.fmnl17-2.fna&_nc_gid=v7F_rtxxS21OfgcKna3FrA&oh=00_AfamGmGFm96TJOhXlIFo2gtGnDlXyAwoJ_r7nQ6CbPVdng&oe=68BEB79D" alt="Professional photographer in studio setting with camera equipment and lighting setup" class="rounded-lg shadow-xl">
+                        </div>
+                        <div>
+                            <h2 class="text-4xl font-bold mb-6">About Me</h2>
+                            <p class="text-gray-600 text-lg mb-6">
+                                With over 10 years of experience, we specialize in creating timeless photographs that tell your unique story. 
+                                Our team of professional photographers is dedicated to capturing the essence of every moment.
+                            </p>
+                            <p class="text-gray-600 text-lg mb-8">
+                                We believe that great photography is about more than just technical skill – it's about understanding people, 
+                                emotions, and the art of storytelling through images.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6">
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-600 mb-2">500+</h3>
+                                    <p class="text-gray-600">Sessions Completed</p>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-600 mb-2">98%</h3>
+                                    <p class="text-gray-600">Client Satisfaction</p>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-600 mb-2">10+</h3>
+                                    <p class="text-gray-600">Years Experience</p>
+                                </div>
+                                <div>
+                                    <h3 class="text-2xl font-bold text-blue-600 mb-2">24h</h3>
+                                    <p class="text-gray-600">Delivery Time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Gallery Page -->
+        <div id="gallery-page" class="page-transition hidden">
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-4xl font-bold text-center mb-16">Our Portfolio</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-7.fna.fbcdn.net/v/t39.30808-6/539686846_24257659270586011_3426991928336853600_n.jpg?_nc_cat=108&ccb=1-7&_nc_sid=833d8c&_nc_ohc=8bSdIH4-cQkQ7kNvwHXGjDH&_nc_oc=AdnG3aZzjEnL_QVqLHgYZYT0wc_3pOoqc67P_X9i4ylMLuAjNh_XtPl6BkEj2cIUtp4&_nc_zt=23&_nc_ht=scontent.fmnl17-7.fna&_nc_gid=1BdG-aqmUjEn0uYPgyb16w&oh=00_AfYkJ9YxWt1aEYSkEySpXf_3UmPEtjVsaD3uI2syOanN5g&oe=68BECB01" alt="Romantic wedding couple embracing during golden hour sunset with soft lighting" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/522191982_23945758635109411_2760235236139975824_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=833d8c&_nc_ohc=3LidiB0RyKoQ7kNvwGsPGnN&_nc_oc=Adlwy84-BpU6S_fd6EMVDPoVqTqyL4_jUlq4bC20y6QklEGvDV1HoX9t5CBMRiN4Fzo&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=p3KF3IfGWBNDU8P870_p-Q&oh=00_AfZ3qy3yg678xztWmsG0pQUIKLtlh9NtfQ_nIVgjcav2pQ&oe=68BED2F8" alt="Family portrait in autumn park setting with colorful leaves and natural smiles" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-4.fna.fbcdn.net/v/t39.30808-6/512010928_9952512841527226_2599959130830864855_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=f727a1&_nc_ohc=4kBeUndKTv4Q7kNvwGhaFUX&_nc_oc=AdlJ2NPHXlMgD5jZ7_JA7iZ_kQubPFY60R9E6DFo7lb_rZ-VsGaeOVZNKXxhtMaA4To&_nc_zt=23&_nc_ht=scontent.fmnl17-4.fna&_nc_gid=NVVy-gsRa0aMQ5G5ik6w5g&oh=00_AfbCWaIQTWQMkMGScJVSA3beENVjrDEp0ExWNVvVAkh0gw&oe=68BEB58E" alt="Corporate headshot with professional studio lighting and clean background" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-3.fna.fbcdn.net/v/t39.30808-6/510171560_9952512844860559_6933731574133601908_n.jpg?_nc_cat=103&ccb=1-7&_nc_sid=f727a1&_nc_ohc=ZrnH454O0OAQ7kNvwGX1waz&_nc_oc=AdlYLBjgbFLyqLE_qL7nDsUch6IZ08B5gUUgOpcjYLjgbiEVPnOW6zA4if0ycSb_fis&_nc_zt=23&_nc_ht=scontent.fmnl17-3.fna&_nc_gid=DVApKhy_v148v6dOhkA7Mw&oh=00_AfaWDFaZtfqmcdZlX0dU2_eH5LBrxzbMdORAJbljJgRaew&oe=68BEE4F5" alt="Event photography capturing candid moments at a gala dinner with elegant decor" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-6.fna.fbcdn.net/v/t39.30808-6/490063708_9376416459136870_7369296986158314208_n.jpg?_nc_cat=109&ccb=1-7&_nc_sid=f727a1&_nc_ohc=yI7HgIw8KvMQ7kNvwFEbZSD&_nc_oc=Adn9LknWblk5xaHEjK5qC9BkNkVspCqddlX-lgAaOHPXLVu_nE4aIURPEW0KVsdzhOU&_nc_zt=23&_nc_ht=scontent.fmnl17-6.fna&_nc_gid=53Qk1sI_Pp-23jlWuLxBCQ&oh=00_AfZYI0J86v3MTBfXSFsoA87-pycWDCyXJMWBBLCFc7KdEg&oe=68BECBAF" alt="Newborn baby photography session with soft blankets and natural window light" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                        <div class="gallery-item">
+                            <img src="https://scontent.fmnl17-8.fna.fbcdn.net/v/t39.30808-6/491737025_9392054544239728_7233971063693552714_n.jpg?_nc_cat=104&ccb=1-7&_nc_sid=f727a1&_nc_ohc=4CScAStOjp8Q7kNvwGIlS7x&_nc_oc=AdnRHM1sdp41Oi9TnB7dEnKfr3FlYYtnztT4AAWrQUA-8NMT2eqULVA87CWlTFBsfco&_nc_zt=23&_nc_ht=scontent.fmnl17-8.fna&_nc_gid=lJpzyuotj9urSpXrd3aWGg&oh=00_AfaxEYxrJExjmhy7GzpDk_W83le0QKBPFwZdD0B36eOK9Q&oe=68BEC191" alt="Commercial product photography with clean white background and professional lighting" class="w-full h-64 object-cover rounded-lg">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Contact Page -->
+        <div id="contact-page" class="page-transition hidden">
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <h2 class="text-4xl font-bold mb-6">Get In Touch</h2>
+                            <p class="text-gray-600 text-lg mb-8">
+                                Have questions about our services or ready to book your session? 
+                                We'd love to hear from you. Fill out the form or contact us directly.
+                            </p>
+                            <div class="space-y-4">
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-blue-600">📍</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Studio Address</h3>
+                                        <p class="text-gray-600">728 28th St, Taguig, 1634 Metro Manila</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-blue-600">📞</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Phone Number</h3>
+                                        <p class="text-gray-600">09696969696</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center mr-4">
+                                        <span class="text-blue-600">✉️</span>
+                                    </div>
+                                    <div>
+                                        <h3 class="font-semibold">Email Address</h3>
+                                        <p class="text-gray-600">VSLDVG@gmail.com</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <form class="bg-gray-50 p-8 rounded-lg shadow-sm">
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Name</label>
+                                    <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Email</label>
+                                    <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                </div>
+                                <div class="mb-4">
+                                    <label class="block text-gray-700 mb-2">Message</label>
+                                    <textarea rows="5" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500"></textarea>
+                                </div>
+                                <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-300">
+                                    Send Message
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Booking Page -->
+        <div id="booking-page" class="page-transition hidden">
+            <section class="py-20 bg-white">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <h2 class="text-4xl font-bold text-center mb-16">Book Your Session</h2>
+                    <div class="grid md:grid-cols-2 gap-12">
+                        <div>
+                            <div class="bg-white p-6 rounded-lg shadow-sm mb-6">
+                                <h3 class="text-2xl font-semibold mb-4">Available Sessions</h3>
+                                <div class="space-y-4">
+                                    <div class="border-l-4 border-blue-500 pl-4 py-2">
+                                        <h4 class="font-semibold">Portrait Session</h4>
+                                        <p class="text-gray-600">1 hour • ₱3000</p>
+                                    </div>
+                                    <div class="border-l-4 border-green-500 pl-4 py-2">
+                                        <h4 class="font-semibold">Wedding Package</h4>
+                                        <p class="text-gray-600">8 hours • ₱8000</p>
+                                    </div>
+                                    <div class="border-l-4 border-purple-500 pl-4 py-2">
+                                        <h4 class="font-semibold">Event Coverage</h4>
+                                        <p class="text-gray-600">4 hours • ₱4000</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-2xl font-semibold mb-4">Booking Information</h3>
+                                <form>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 mb-2">Session Type</label>
+                                        <select class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                            <option>Portrait Session</option>
+                                            <option>Wedding Package</option>
+                                            <option>Event Coverage</option>
+                                        </select>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 mb-2">Selected Date</label>
+                                        <input type="text" id="selected-date" class="w-full px-4 py-2 border border-gray-300 rounded-lg bg-gray-50" readonly>
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 mb-2">Your Name</label>
+                                        <input type="text" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 mb-2">Email</label>
+                                        <input type="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                    </div>
+                                    <div class="mb-4">
+                                        <label class="block text-gray-700 mb-2">Phone</label>
+                                        <input type="tel" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500">
+                                    </div>
+                                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-lg font-semibold transition duration-300 w-full">
+                                        Confirm Booking
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="bg-white p-6 rounded-lg shadow-sm">
+                                <h3 class="text-2xl font-semibold mb-6 text-center">Availability Calendar</h3>
+                                <div class="flex justify-between items-center mb-6">
+                                    <button id="prev-month" class="p-2 hover:bg-gray-100 rounded">←</button>
+                                    <h4 id="current-month" class="text-xl font-semibold">January 2024</h4>
+                                    <button id="next-month" class="p-2 hover:bg-gray-100 rounded">→</button>
+                                </div>
+                                <div class="grid grid-cols-7 gap-2 mb-2">
+                                    <div class="text-center text-sm font-semibold py-2">Sun</div>
+                                    <div class="text-center text-sm font-semibold py-2">Mon</div>
+                                    <div class="text-center text-sm font-semibold py-2">Tue</div>
+                                    <div class="text-center text-sm font-semibold py-2">Wed</div>
+                                    <div class="text-center text-sm font-semibold py-2">Thu</div>
+                                    <div class="text-center text-sm font-semibold py-2">Fri</div>
+                                    <div class="text-center text-sm font-semibold py-2">Sat</div>
+                                </div>
+                                <div id="calendar-grid" class="grid grid-cols-7 gap-2"></div>
+                                <div class="mt-6 flex items-center justify-center space-x-4">
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-green-100 border-2 border-green-500 rounded mr-2"></div>
+                                        <span class="text-sm">Available</span>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <div class="w-4 h-4 bg-red-100 border-2 border-red-500 rounded mr-2"></div>
+                                        <span class="text-sm">Booked</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">VSL DVG</h3>
+                    <p class="text-gray-400">Professional photography services for all your special moments.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-page="home">Home</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-page="about">About</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-page="gallery">Gallery</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Services</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-white">Wedding Photography</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Portrait Sessions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Event Coverage</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-white">Commercial Photography</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Connect</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+                        <a href="#" class="text-gray-400 hover:text-white">Twitter</a>
+                    </div>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>© 2024 Capture Moments. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Page Navigation
+        const pages = {
+            home: document.getElementById('home-page'),
+            about: document.getElementById('about-page'),
+            gallery: document.getElementById('gallery-page'),
+            contact: document.getElementById('contact-page'),
+            booking: document.getElementById('booking-page')
+        };
+
+        const navLinks = document.querySelectorAll('a[data-page]');
+        const pageButtons = document.querySelectorAll('button[data-page]');
+
+        function showPage(pageName) {
+            // Hide all pages
+            Object.values(pages).forEach(page => {
+                page.classList.add('hidden');
+                page.style.opacity = '0';
+            });
+            
+            // Show selected page
+            pages[pageName].classList.remove('hidden');
+            setTimeout(() => {
+                pages[pageName].style.opacity = '1';
+            }, 10);
+            
+            // Update active navigation
+            navLinks.forEach(link => {
+                if (link.getAttribute('data-page') === pageName) {
+                    link.classList.remove('text-gray-500');
+                    link.classList.add('text-gray-900', 'active-page');
+                } else {
+                    link.classList.add('text-gray-500');
+                    link.classList.remove('text-gray-900', 'active-page');
+                }
+            });
+            
+            // Scroll to top
+            window.scrollTo(0, 0);
+        }
+
+        // Add event listeners to navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage(link.getAttribute('data-page'));
+            });
+        });
+
+        // Add event listeners to page buttons
+        pageButtons.forEach(button => {
+            button.addEventListener('click', (e) => {
+                e.preventDefault();
+                showPage(button.getAttribute('data-page'));
+            });
+        });
+
+        // Calendar functionality
+        let currentDate = new Date();
+        const bookedDates = [
+            '2024-01-15', '2024-01-16', '2024-01-20',
+            '2024-01-25', '2024-01-26', '2024-02-05',
+            '2024-02-10', '2024-02-15', '2024-02-20'
+        ];
+
+        function generateCalendar() {
+            const calendarGrid = document.getElementById('calendar-grid');
+            const currentMonthElement = document.getElementById('current-month');
+            
+            // Clear previous calendar
+            calendarGrid.innerHTML = '';
+            
+            // Set current month text
+            currentMonthElement.textContent = currentDate.toLocaleDateString('en-US', { 
+                month: 'long', 
+                year: 'numeric' 
+            });
+            
+            // Get first day of month and total days
+            const firstDay = new Date(currentDate.getFullYear(), currentDate.getMonth(), 1);
+            const lastDay = new Date(currentDate.getFullYear(), currentDate.getMonth() + 1, 0);
+            const totalDays = lastDay.getDate();
+            const startingDay = firstDay.getDay();
+            
+            // Add empty cells for days before the first day of the month
+            for (let i = 0; i < startingDay; i++) {
+                const emptyCell = document.createElement('div');
+                emptyCell.className = 'h-12';
+                calendarGrid.appendChild(emptyCell);
+            }
+            
+            // Add days of the month
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            for (let day = 1; day <= totalDays; day++) {
+                const dayDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), day);
+                const dateString = dayDate.toISOString().split('T')[0];
+                
+                const dayElement = document.createElement('div');
+                dayElement.className = 'calendar-day h-12 flex items-center justify-center rounded border-2 cursor-pointer';
+                
+                // Check if date is in the past
+                if (dayDate < today) {
+                    dayElement.classList.add('bg-gray-100', 'border-gray-300', 'text-gray-400');
+                    dayElement.innerHTML = `<span class="text-sm">${day}</span>`;
+                } 
+                // Check if date is booked
+                else if (bookedDates.includes(dateString)) {
+                    dayElement.classList.add('bg-red-100', 'border-red-500', 'text-red-700');
+                    dayElement.innerHTML = `<span class="text-sm">${day}</span>`;
+                    dayElement.title = 'Booked - Not Available';
+                } 
+                // Available date
+                else {
+                    dayElement.classList.add('bg-green-100', 'border-green-500', 'text-green-700');
+                    dayElement.innerHTML = `<span class="text-sm">${day}</span>`;
+                    dayElement.title = 'Available - Click to select';
+                    
+                    // Add click event for available dates
+                    dayElement.addEventListener('click', () => {
+                        document.querySelectorAll('.calendar-day').forEach(el => {
+                            el.classList.remove('bg-blue-100', 'border-blue-500');
+                        });
+                        dayElement.classList.add('bg-blue-100', 'border-blue-500');
+                        document.getElementById('selected-date').value = dayDate.toLocaleDateString();
+                    });
+                }
+                
+                calendarGrid.appendChild(dayElement);
+            }
+        }
+
+        // Month navigation
+        document.getElementById('prev-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() - 1);
+            generateCalendar();
+        });
+
+        document.getElementById('next-month').addEventListener('click', () => {
+            currentDate.setMonth(currentDate.getMonth() + 1);
+            generateCalendar();
+        });
+
+        // Initialize calendar
+        generateCalendar();
+
+        // Form submission handling
+        document.querySelectorAll('form').forEach(form => {
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+                alert('Thank you! Your information has been submitted successfully.');
+                form.reset();
+            });
+        });
+
+        // Initialize page
+        showPage('home');
+    </script>
+</body>
+</html>
+
